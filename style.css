@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: blue;
+}
+
+.board{
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: repeat(4,auto);
+
+}
+.card{
+    background-color: white;
+    height: 70px;
+    width: 70px;
+}
+
+
+.card-face{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* write a function when clicked turns card-back class display to flex
+and card-frot class display to non*/
+.card-back.show{
+    display: flex;
+}
+.card-back.hide{
+    display: none;
+}
+
+.card-front.show {
+  display: flex;  
+}
+.card-front.hide {
+    display:none;
+}
+
+
+.card-front .image {
+    object-fit: cover;
+    object-position: 0 0;
+    height: 90%;
+    width: 90%;
+}
+
