@@ -37,7 +37,7 @@ body {
 }
 
 /* write a function when clicked turns card-back class display to flex
-and card-frot class display to non*/
+and card-frot class display to none*/
 .card-back.show{
     display: flex;
 }
