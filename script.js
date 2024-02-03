@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.order = randomPos;
     });
   }
-
   shuffleCards();
 });
-
+let dataValue = [];
+let HideElements = [];
+let ShowElements = [];
 function handleImageClick(clickedImageEvent) {
   const clickedImage = clickedImageEvent.target;
   console.log(clickedImage.className);
@@ -26,6 +27,10 @@ function handleImageClick(clickedImageEvent) {
     cardBack.classList.add("hide");
     cardFront.classList.remove("hide");
     cardFront.classList.add("show");
+    dataValue.push(cardFront.getAttribute("data-value"));
+    HideElements.push(cardBack);
+    ShowElements.push(cardFront);
+    check();
   } else if (clickedImage.className == "card-back show card-face") {
     const cardBack = clickedImage;
     const Card = cardBack.parentNode;
@@ -34,7 +39,37 @@ function handleImageClick(clickedImageEvent) {
     cardBack.classList.add("hide");
     cardFront.classList.remove("hide");
     cardFront.classList.add("show");
+    HideElements.push(cardBack);
+    ShowElements.push(cardFront);
+    dataValue.push(cardFront.getAttribute("data-value"));
+    check();
   }
+}
+
+async function check() {
+  setTimeout(() => {
+    if (dataValue.length == 2) {
+      if (dataValue[0] != dataValue[1]) {
+        HideElements[0].classList.remove("hide");
+        HideElements[1].classList.remove("hide");
+        HideElements[0].classList.add("show");
+        HideElements[1].classList.add("show");
+        ShowElements[0].classList.remove("show");
+        ShowElements[1].classList.remove("show");
+        ShowElements[0].classList.add("hide");
+        ShowElements[1].classList.add("hide");
+        ShowElements = [];
+        HideElements = [];
+        dataValue = [];
+        console.log("not same");
+      } else {
+        console.log("same");
+        ShowElements = [];
+        HideElements = [];
+        dataValue = [];
+      }
+    }
+  }, 1000);
 }
 
 document
