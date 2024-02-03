@@ -2,6 +2,19 @@
  card-font and remove class hide from the card. and also use the data- attribute
  to check if the selected cards refer to the same picture.
  */
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".card");
+
+  function shuffleCards() {
+    cards.forEach((card) => {
+      const randomPos = Math.floor(Math.random() * cards.length);
+      card.style.order = randomPos;
+    });
+  }
+
+  shuffleCards();
+});
+
 function handleImageClick(clickedImageEvent) {
   const clickedImage = clickedImageEvent.target;
   console.log(clickedImage.className);
